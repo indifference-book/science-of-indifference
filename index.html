@@ -326,6 +326,56 @@
             outline: 2px solid rgba(40,40,40,0.5);
             outline-offset: -2px;
         }
+        /* Обёртка для ровного расположения кнопок */
+.download-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 15px 0 25px;
+}
+
+/* Стиль кнопок скачивания (копия .buy-btn, но компактнее) */
+.dl-btn {
+    display: inline-block;
+    background: transparent;
+    color: #1a1a1a;
+    padding: 10px 24px; /* Отступы меньше, чем у основной кнопки */
+    text-decoration: none;
+    font-size: 0.8em; /* Шрифт аккуратнее */
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 2px solid rgba(40, 40, 40, 0.4);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    box-shadow: 0 0 15px rgba(40, 40, 40, 0.1);
+    margin: 4px;
+}
+
+/* Тот самый эффект блика */
+.dl-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(40,40,40,0.15), transparent);
+    transition: left 0.55s ease;
+}
+
+/* Эффекты при наведении */
+.dl-btn:hover {
+    border-color: rgba(40, 40, 40, 0.8);
+    box-shadow: 0 0 35px rgba(40, 40, 40, 0.25);
+    transform: translateY(-2px);
+}
+.dl-btn:hover::before {
+    left: 100%;
+}
     </style>
 </head>
 <body>
@@ -368,21 +418,20 @@
     </div>
     <div class="accordion-content" id="content-2" role="region" aria-labelledby="header-2">
         <div class="accordion-content-inner">
-    <p style="margin-bottom: 16px;">This book is completely free. No strings attached. Choose your language and format:</p>
+    <p style="text-align: center; color: #5a5a5a; margin-bottom: 10px;">This book is completely free. No strings attached.</p>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
-        <!-- Russian -->
-        <div style="background: rgba(220, 210, 195, 0.5); border-radius: 10px; padding: 14px 12px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease;">
-            <h4 style="margin: 0 0 10px; font-size: 0.95em; font-weight: 600; color: #2c3e50;">🇷🇺 Russian</h4>
-            <a href="NAUKA-RAVNODUSHIYA.pdf" download style="display: block; width: 100%; padding: 10px 8px; margin: 6px 0; background: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 500; transition: all 0.2s ease;">📄 PDF</a>
-            <a href="NAUKA-RAVNODUSHIYA.epub" download style="display: block; width: 100%; padding: 10px 8px; margin: 6px 0; background: #9b59b6; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 500; transition: all 0.2s ease;">📖 EPUB</a>
-        </div>
-        <!-- English -->
-        <div style="background: rgba(220, 210, 195, 0.5); border-radius: 10px; padding: 14px 12px; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease;">
-            <h4 style="margin: 0 0 10px; font-size: 0.95em; font-weight: 600; color: #2c3e50;">🇬🇧 English</h4>
-            <a href="SCIENCE-OF-INDIFFERENCE.pdf" download style="display: block; width: 100%; padding: 10px 8px; margin: 6px 0; background: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 500; transition: all 0.2s ease;">📄 PDF</a>
-            <a href="SCIENCE-OF-INDIFFERENCE.epub" download style="display: block; width: 100%; padding: 10px 8px; margin: 6px 0; background: #9b59b6; color: white; text-decoration: none; border-radius: 8px; font-size: 0.9em; font-weight: 500; transition: all 0.2s ease;">📖 EPUB</a>
-        </div>
+    <div class="download-wrapper">
+        <a href="NAUKA-RAVNODUSHIYA.pdf" class="dl-btn" download>🇷🇺 PDF</a>
+        <a href="NAUKA-RAVNODUSHIYA.epub" class="dl-btn" download>🇷🇺 EPUB</a>
+        <a href="SCIENCE-OF-INDIFFERENCE.pdf" class="dl-btn" download>🇬🇧 PDF</a>
+        <a href="SCIENCE-OF-INDIFFERENCE.epub" class="dl-btn" download>🇬🇧 EPUB</a>
+    </div>
+
+    <p style="margin-top: 18px; padding-top: 12px; border-top: 1px solid rgba(40,40,40,0.1); font-size: 0.9em; color: #555; text-align: center;">
+        If it resonates, you can support the author here: 
+        <a href="https://app.lava.top/114215686?tabId=donate" target="_blank" style="color: #1a1a1a; text-decoration: none; border-bottom: 1px dotted rgba(40,40,40,0.4); font-weight: 600;">Say thanks</a>
+    </p>
+</div>
     </div>
 
     <p style="margin-top: 20px; padding-top: 14px; border-top: 1px solid #eee; font-size: 0.9em; color: #555; text-align: center;">
