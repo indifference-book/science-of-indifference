@@ -35,19 +35,24 @@
     .accordion-content p{font-size:1.05em;color:#2a2a2a;margin:10px 0;line-height:1.7}
     .accordion-content ul{margin:12px 0 0 20px;color:#2a2a2a}
     .accordion-content li{margin:6px 0;font-size:1.02em}
-    .cta{text-align:center;margin:60px 0 40px;animation:fadeInUp 1s ease-out 0.6s both}
-    .buy-btn,.dl-btn{display:inline-block;background:transparent;color:#1a1a1a;text-decoration:none;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;border:2px solid rgba(40,40,40,0.4);border-radius:50px;position:relative;overflow:hidden;transition:all 0.35s ease;box-shadow:0 0 25px rgba(40,40,40,0.15)}
-    .buy-btn::before,.dl-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(40,40,40,0.15),transparent);transition:left 0.55s ease}
-    .buy-btn:hover,.dl-btn:hover{border-color:rgba(40,40,40,0.8);box-shadow:0 0 45px rgba(40,40,40,0.3);transform:translateY(-3px)}
-    .buy-btn:hover::before,.dl-btn:hover::before{left:100%}
-    .buy-btn{padding:22px 65px;font-size:1.25em}
-    .dl-btn{padding:10px 28px;font-size:0.85em;letter-spacing:1.5px;margin:4px}
+    .dl-btn{display:inline-block;background:transparent;color:#1a1a1a;text-decoration:none;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:2px solid rgba(40,40,40,0.4);border-radius:50px;position:relative;overflow:hidden;transition:all 0.35s ease;box-shadow:0 0 25px rgba(40,40,40,0.15);padding:10px 28px;font-size:0.85em;margin:4px}
+    .dl-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(40,40,40,0.15),transparent);transition:left 0.55s ease}
+    .dl-btn:hover{border-color:rgba(40,40,40,0.8);box-shadow:0 0 45px rgba(40,40,40,0.3);transform:translateY(-3px)}
+    .dl-btn:hover::before{left:100%}
     .download-wrapper{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px 0}
     footer{text-align:center;margin-top:50px;padding:25px;color:#7a7a7a;font-size:0.9em;animation:fadeInUp 1s ease-out 1s both;border-top:1px solid rgba(40,40,40,0.08)}
     .smoke-bottom{position:fixed;bottom:0;left:0;width:100%;height:180px;background:linear-gradient(to top,rgba(40,40,40,0.05),transparent);pointer-events:none;z-index:0}
+    .support-method{margin:20px 0;padding:20px;background:rgba(235,225,210,0.4);border-left:3px solid rgba(40,40,40,0.3);border-radius:5px}
+    .support-method h4{font-size:1.1em;font-weight:700;color:#1a1a1a;margin-bottom:10px}
+    .support-method p{font-size:1em;color:#2a2a2a;margin:8px 0;line-height:1.6}
+    .email-highlight{font-family:'Courier New',monospace;background:rgba(40,40,40,0.08);padding:3px 8px;border-radius:3px;font-weight:600}
+    .china-block{margin-top:30px;padding:20px;background:rgba(200,190,175,0.5);border:1px solid rgba(40,40,40,0.2);border-radius:8px}
+    .china-block h3{font-size:1.2em;font-weight:700;color:#1a1a1a;margin-bottom:12px}
+    .china-block ul{margin:10px 0 10px 20px}
+    .china-block li{margin:6px 0;font-size:0.95em}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:768px){.main-title h1{font-size:2.3em}.subtitle{font-size:1em;letter-spacing:1.5px}.attention{padding:30px 22px}.attention h2{font-size:1.35em;letter-spacing:3px}.attention p{font-size:1.05em}.accordion-header{padding:18px 22px}.accordion-header h3{font-size:1.2em}.accordion-content{padding:0 22px}.accordion-item.active .accordion-content{padding:0 22px 20px}.buy-btn{padding:18px 50px;font-size:1.1em}.dl-btn{padding:9px 24px;font-size:0.8em}}
-    @media(max-width:480px){.main-title h1{font-size:1.9em}.accordion-header{padding:16px 18px;flex-wrap:wrap;gap:8px}.accordion-header h3{font-size:1.15em}.buy-btn{padding:16px 40px;font-size:1em;width:100%}.dl-btn{padding:8px 20px;font-size:0.75em;width:100%}}
+    @media(max-width:768px){.main-title h1{font-size:2.3em}.subtitle{font-size:1em;letter-spacing:1.5px}.attention{padding:30px 22px}.attention h2{font-size:1.35em;letter-spacing:3px}.attention p{font-size:1.05em}.accordion-header{padding:18px 22px}.accordion-header h3{font-size:1.2em}.accordion-content{padding:0 22px}.accordion-item.active .accordion-content{padding:0 22px 20px}.dl-btn{padding:9px 24px;font-size:0.8em}}
+    @media(max-width:480px){.main-title h1{font-size:1.9em}.accordion-header{padding:16px 18px;flex-wrap:wrap;gap:8px}.accordion-header h3{font-size:1.15em}.dl-btn{padding:8px 20px;font-size:0.75em;width:100%}}
     .accordion-header:focus{outline:2px solid rgba(40,40,40,0.3);outline-offset:-2px}
     .accordion-header:focus:not(:focus-visible){outline:none}
     .accordion-header:focus-visible{outline:2px solid rgba(40,40,40,0.5);outline-offset:-2px}
@@ -78,10 +83,6 @@
               <a href="SCIENCE-OF-INDIFFERENCE.pdf" class="dl-btn" download>en PDF</a>
               <a href="SCIENCE-OF-INDIFFERENCE.epub" class="dl-btn" download>en EPUB</a>
             </div>
-            <p style="margin-top:18px;padding-top:12px;border-top:1px solid rgba(40,40,40,0.1);font-size:0.9em;color:#555;text-align:center">
-               You can support the author here. Same link at the bottom, just prettier: 
-              <a href="https://app.lava.top/114215686?tabId=donate" target="_blank" style="color:#1a1a1a;text-decoration:none;border-bottom:1px dotted rgba(40,40,40,0.4);font-weight:600">Support</a>
-            </p>
           </div>
         </div>
       </div>
@@ -119,15 +120,43 @@
       </div>
     </div>
 
-    <!-- Final CTA -->
-    <div class="cta">
-      <a href="https://app.lava.top/114215686?tabId=donate" class="buy-btn">Say thanks</a>
+    <div class="attention">
+      <h2>Support the Project</h2>
+      <p>This book is completely free. You can download it, copy it, and share it while respecting authorship.</p>
+      
+      <p>I'm giving it away because practical knowledge shouldn't be held hostage by corporate algorithms. However, if this book brought you clarity, peace of mind, understanding, or confidence—and you'd like to say thank you—here are the working methods to support the project and the author:</p>
+
+      <div class="support-method">
+        <h4>1. Digital Gift Cards (Standard Method)</h4>
+        <p>Purchase a digital gift card from Amazon, Apple, or Steam (any amount) and send the redemption code to:</p>
+        <p>📧 <span class="email-highlight">[your-email@domain.com]</span></p>
+        <p style="font-size:0.9em;color:#555;margin-top:8px"><em>This bypasses international banking restrictions and goes directly to me.</em></p>
+      </div>
+
+      <div class="support-method">
+        <h4>2. Direct Crypto Transfer</h4>
+        <p>If you prefer direct P2P transactions, send USDT (TRC20) or BTC to my wallet:</p>
+        <p style="font-family:'Courier New',monospace;font-size:0.9em;background:rgba(40,40,40,0.08);padding:10px;border-radius:5px;word-break:break-all">
+          [Insert wallet addresses / QR codes here]
+        </p>
+      </div>
+
+      <p style="margin-top:20px;font-size:0.95em;color:#444">There are no premium chapters, hidden paywalls, or subscriptions here. You either pay what you think it's worth, or you don't. The choice is yours.</p>
+
+      <div class="china-block">
+        <h3>For Readers in China / 致中国读者</h3>
+        <p>Standard international payment systems are not available in my region. If you wish to send your gratitude, digital gift cards work as a universal alternative.</p>
+        <p><strong>For Chinese readers, the following digital codes are accepted:</strong></p>
+        <ul>
+          <li><strong>JD.com E-Cards</strong> (京东E卡)</li>
+          <li><strong>Apple Gift Cards</strong> (中国区)</li>
+          <li><strong>Steam Wallet Codes</strong> (蒸汽平台 / Perfect World)</li>
+        </ul>
+        <p>Simply purchase a digital code for any amount and email it to:</p>
+        <p>📧 <span class="email-highlight">[your-email@domain.com]</span></p>
+        <p style="font-size:0.9em;color:#555;margin-top:8px"><em>This is the most reliable way to support the project across the Great Firewall.</em></p>
+      </div>
     </div>
-    
-<div class="attention">
-  <h2>Attention!</h2>
-  <p>Due to the growing contradictions between global elites and resulting financial restrictions, I use Lava.top for secure support. It supports Visa, Mastercard, PayPal, SberPay, SBP (Faster Payments System), and Crypto. All transactions are protected by standard SSL encryption.</p>
-</div>
     
     <footer>
       <p>© 2025 Marat Bekmurzaev. All rights reserved.</p>
