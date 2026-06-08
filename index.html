@@ -16,98 +16,393 @@
       font-display: swap;
     }
 
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:"TN Roman","Times New Roman",Times,Georgia,"DejaVu Serif",serif;background:linear-gradient(135deg,#f5f0e6 0%,#e8e0d5 50%,#dcd4c8 100%);color:#1a1a1a;min-height:100vh;overflow-x:hidden;position:relative;line-height:1.6}
-    .particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
-    .particle{position:absolute;width:2px;height:2px;background:rgba(40,40,40,0.12);border-radius:50%;animation:float 25s infinite linear}
-    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(720deg);opacity:0}}
-    .container{max-width:900px;margin:0 auto;padding:60px 30px;position:relative;z-index:1}
-    .main-title{text-align:center;margin-bottom:10px;animation:fadeInUp 1s ease-out}
-    .main-title h1{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:3.5em;font-weight:700;letter-spacing:-1px;background:linear-gradient(135deg,#1a1a1a 0%,#4a4a4a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.15;margin-bottom:8px}
-    .subtitle{font-size:1.3em;color:#5a5a5a;font-style:italic;letter-spacing:2px;text-transform:uppercase}
-    .divider{width:80px;height:2px;background:linear-gradient(90deg,transparent,#3a3a3a,transparent);margin:35px auto;animation:pulse 2.5s infinite}
-    @keyframes pulse{0%,100%{opacity:0.4;transform:scaleX(0.9)}50%{opacity:1;transform:scaleX(1)}}
-    .attention{background:rgba(220,210,195,0.7);border:1px solid rgba(40,40,40,0.15);border-radius:10px;padding:40px 35px;margin:45px 0;backdrop-filter:blur(8px);animation:fadeInUp 1s ease-out 0.2s both;position:relative;overflow:hidden}
-    .attention::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(40,40,40,0.2),transparent)}
-    .attention h2{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.7em;font-weight:700;color:#1a1a1a;margin-bottom:18px;text-align:center;letter-spacing:4px;text-transform:uppercase}
-    .attention p{font-size:1.15em;color:#2a2a2a;text-align:left;margin:12px 0;line-height:1.7}
-    .accordion{margin:50px 0 65px;animation:fadeInUp 1s ease-out 0.4s both}
-    .accordion-item{background:rgba(235,225,210,0.6);border:1px solid rgba(40,40,40,0.12);border-radius:10px;margin-bottom:16px;overflow:hidden;transition:all 0.3s ease}
-    .accordion-item:hover{border-color:rgba(40,40,40,0.25);box-shadow:0 4px 20px rgba(40,40,40,0.08)}
-    .accordion-item.active{background:rgba(220,210,195,0.85);border-color:rgba(40,40,40,0.3)}
-    .accordion-header{padding:22px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;position:relative}
-    .accordion-header::after{content:'▸';font-size:1.3em;font-weight:700;color:#3a3a3a;transition:transform 0.3s ease;flex-shrink:0;margin-left:12px}
-    .accordion-item.active .accordion-header::after{transform:rotate(90deg);color:#1a1a1a}
-    .accordion-header h3{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.35em;font-weight:700;color:#1a1a1a;letter-spacing:0.5px;margin:0}
-    .accordion-content{max-height:0;overflow:hidden;transition:max-height 0.4s ease-out,padding 0.4s ease;padding:0 28px}
-    .accordion-item.active .accordion-content{padding:0 28px 24px;transition:max-height 0.5s ease-in,padding 0.4s ease}
-    .accordion-content-inner{padding-top:8px}
-    .accordion-content p{font-size:1.05em;color:#2a2a2a;margin:10px 0;line-height:1.7}
-    .accordion-content ul{margin:12px 0 0 20px;color:#2a2a2a}
-    .accordion-content li{margin:6px 0;font-size:1.02em}
-    .dl-btn{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;display:inline-block;background:transparent;color:#1a1a1a;text-decoration:none;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:2px solid rgba(40,40,40,0.4);border-radius:50px;position:relative;overflow:hidden;transition:all 0.35s ease;box-shadow:0 0 25px rgba(40,40,40,0.15);padding:10px 28px;font-size:0.85em;margin:4px}
-    .dl-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(40,40,40,0.15),transparent);transition:left 0.55s ease}
-    .dl-btn:hover{border-color:rgba(40,40,40,0.8);box-shadow:0 0 45px rgba(40,40,40,0.3);transform:translateY(-3px)}
-    .dl-btn:hover::before{left:100%}
-    .download-wrapper{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px 0}
-    footer{text-align:center;margin-top:50px;padding:25px;color:#7a7a7a;font-size:0.9em;animation:fadeInUp 1s ease-out 1s both;border-top:1px solid rgba(40,40,40,0.08)}
-    .smoke-bottom{position:fixed;bottom:0;left:0;width:100%;height:180px;background:linear-gradient(to top,rgba(40,40,40,0.05),transparent);pointer-events:none;z-index:0}
-    .support-method{margin:20px 0;padding:20px;background:rgba(235,225,210,0.4);border-left:3px solid rgba(40,40,40,0.3);border-radius:5px}
-    .support-method h4{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.1em;font-weight:700;color:#1a1a1a;margin-bottom:10px}
-    .support-method p{font-size:1em;color:#2a2a2a;margin:8px 0;line-height:1.6}
-    
-    .email-highlight{
-      font-family:"TN Roman","Times New Roman",monospace,serif;
-      font-size:1.2em;
-      font-weight:700;
-      color:#1a1a1a;
-      background:rgba(235,225,210,0.8);
-      padding:10px 20px;
-      border-radius:3px;
-      border-left:3px solid rgba(40,40,40,0.5);
-      display:inline-block;
-      letter-spacing:0.3px;
-      text-decoration:none !important;
-      cursor:default;
-      transition:background 0.2s ease;
-    }
-    .email-highlight:hover{
-      background:rgba(220,210,195,0.95);
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+      background: linear-gradient(135deg, #f5f0e6 0%, #e8e0d5 50%, #dcd4c8 100%);
+      color: #1a1a1a;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
     }
 
-    .boosty-link{
-      font-family:"TN Roman","Times New Roman",monospace,serif;
-      font-size:1.15em;
-      font-weight:700;
-      color:#1a1a1a;
-      background:rgba(235,225,210,0.8);
-      padding:10px 20px;
-      border-radius:3px;
-      border-left:3px solid rgba(40,40,40,0.5);
-      display:inline-block;
-      letter-spacing:0.3px;
-      text-decoration:none !important;
-      transition:background 0.2s ease;
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
-    .boosty-link:hover{
-      background:rgba(220,210,195,0.95);
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: rgba(40, 40, 40, 0.12);
+      border-radius: 50%;
+      animation: float 25s infinite linear;
+    }
+    @keyframes float {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
     }
 
-    .china-block{margin-top:30px;padding:20px;background:rgba(200,190,175,0.5);border:1px solid rgba(40,40,40,0.2);border-radius:8px}
-    .china-block h3{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.2em;font-weight:700;color:#1a1a1a;margin-bottom:12px}
-    .china-block ul{margin:10px 0 10px 20px}
-    .china-block li{margin:6px 0;font-size:0.95em}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:768px){.main-title h1{font-size:2.3em}.subtitle{font-size:1em;letter-spacing:1.5px}.attention{padding:30px 22px}.attention h2{font-size:1.35em;letter-spacing:3px}.attention p{font-size:1.05em}.accordion-header{padding:18px 22px}.accordion-header h3{font-size:1.2em}.accordion-content{padding:0 22px}.accordion-item.active .accordion-content{padding:0 22px 20px}.dl-btn{padding:9px 24px;font-size:0.8em}.email-highlight,.boosty-link{font-size:1em;padding:8px 16px;display:block;text-align:center;width:fit-content;margin:15px auto}}
-    @media(max-width:480px){.main-title h1{font-size:1.9em}.accordion-header{padding:16px 18px;flex-wrap:wrap;gap:8px}.accordion-header h3{font-size:1.15em}.dl-btn{padding:8px 20px;font-size:0.75em;width:100%}}
-    .accordion-header:focus{outline:2px solid rgba(40,40,40,0.3);outline-offset:-2px}
-    .accordion-header:focus:not(:focus-visible){outline:none}
-    .accordion-header:focus-visible{outline:2px solid rgba(40,40,40,0.5);outline-offset:-2px}
+    .smoke-bottom {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%; height: 180px;
+      background: linear-gradient(to top, rgba(40, 40, 40, 0.05), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 10px;
+      animation: fadeInUp 1s ease-out;
+    }
+    .main-title h1 {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+      font-size: 3.5em;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 1.3em;
+      color: #5a5a5a;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 80px; height: 2px;
+      background: linear-gradient(90deg, transparent, #3a3a3a, transparent);
+      margin: 35px auto;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scaleX(0.9); }
+      50%      { opacity: 1;   transform: scaleX(1); }
+    }
+
+    /* ---------- Accordion ---------- */
+    .accordion {
+      margin: 50px 0 65px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .accordion-item {
+      background: rgba(235, 225, 210, 0.6);
+      border: 1px solid rgba(40, 40, 40, 0.12);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .accordion-item:hover {
+      border-color: rgba(40, 40, 40, 0.25);
+      box-shadow: 0 4px 20px rgba(40, 40, 40, 0.08);
+    }
+    .accordion-item.active {
+      background: rgba(220, 210, 195, 0.85);
+      border-color: rgba(40, 40, 40, 0.3);
+    }
+    .accordion-header {
+      padding: 22px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      position: relative;
+    }
+    .accordion-header::after {
+      content: '▸';
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #3a3a3a;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .accordion-item.active .accordion-header::after {
+      transform: rotate(90deg);
+      color: #1a1a1a;
+    }
+    .accordion-header h3 {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+      font-size: 1.35em;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s ease;
+      padding: 0 28px;
+    }
+    .accordion-item.active .accordion-content {
+      padding: 0 28px 24px;
+      transition: max-height 0.5s ease-in, padding 0.4s ease;
+    }
+    .accordion-content-inner { padding-top: 8px; }
+    .accordion-content p {
+      font-size: 1.05em;
+      color: #2a2a2a;
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+    .accordion-content ul { margin: 12px 0 0 20px; color: #2a2a2a; }
+    .accordion-content li { margin: 6px 0; font-size: 1.02em; }
+
+    .accordion-header:focus { outline: 2px solid rgba(40, 40, 40, 0.3); outline-offset: -2px; }
+    .accordion-header:focus:not(:focus-visible) { outline: none; }
+    .accordion-header:focus-visible { outline: 2px solid rgba(40, 40, 40, 0.5); outline-offset: -2px; }
+
+    /* ---------- Download buttons ---------- */
+    .dl-btn {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+      display: inline-block;
+      background: transparent;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 2px solid rgba(40, 40, 40, 0.4);
+      border-radius: 50px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 25px rgba(40, 40, 40, 0.15);
+      padding: 10px 28px;
+      font-size: 0.85em;
+      margin: 4px;
+    }
+    .dl-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(40, 40, 40, 0.15), transparent);
+      transition: left 0.55s ease;
+    }
+    .dl-btn:hover {
+      border-color: rgba(40, 40, 40, 0.8);
+      box-shadow: 0 0 45px rgba(40, 40, 40, 0.3);
+      transform: translateY(-3px);
+    }
+    .dl-btn:hover::before { left: 100%; }
+    .download-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    /* ---------- Attention block ---------- */
+    .attention {
+      background: rgba(220, 210, 195, 0.7);
+      border: 1px solid rgba(40, 40, 40, 0.15);
+      border-radius: 10px;
+      padding: 40px 35px;
+      margin: 45px 0;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 1s ease-out 0.2s both;
+      position: relative;
+      overflow: hidden;
+    }
+    .attention::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(40, 40, 40, 0.2), transparent);
+    }
+    .attention h2 {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+      font-size: 1.7em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .attention > p {
+      font-size: 1.15em;
+      color: #2a2a2a;
+      text-align: left;
+      margin: 12px 0;
+      line-height: 1.7;
+    }
+
+    /* ---------- Support methods (карточки) ---------- */
+    .support-method {
+      margin: 28px 0;
+      padding: 28px 32px;
+      background: rgba(245, 238, 225, 0.45);
+      border: 1px solid rgba(40, 40, 40, 0.08);
+      border-radius: 14px;
+      transition: background 0.3s ease;
+    }
+    .support-method:hover {
+      background: rgba(245, 238, 225, 0.6);
+    }
+    .support-method h4 {
+      font-family: "TN Roman", "Times New Roman", serif;
+      font-size: 1.15em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+    .support-method p {
+      font-size: 1.02em;
+      color: #2a2a2a;
+      margin: 10px 0;
+      line-height: 1.7;
+    }
+    .support-method ul {
+      margin: 15px 0 15px 20px;
+      line-height: 1.8;
+    }
+    .support-method .note {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 12px;
+    }
+
+    /* ---------- Contact pills (email + boosty в одном стиле) ---------- */
+    .contact-pill {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      font-family: "TN Roman", "Times New Roman", serif;
+      font-weight: 700;
+      color: #1a1a1a;
+      background: rgba(250, 245, 235, 0.9);
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(40, 40, 40, 0.12);
+      letter-spacing: 0.5px;
+      text-align: center;
+      text-decoration: none !important;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(40, 40, 40, 0.04);
+    }
+    .contact-pill:hover {
+      background: rgba(255, 252, 245, 1);
+      border-color: rgba(40, 40, 40, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(40, 40, 40, 0.08);
+    }
+
+    .contact-pill--email {
+      font-size: 1.4em;
+      padding: 16px 32px;
+      cursor: default;
+      user-select: all;
+    }
+    .contact-pill--boosty {
+      font-size: 1.15em;
+      color: #2a2a2a;
+    }
+
+    /* Группирующий контейнер для визуального единства секции поддержки */
+    .contact-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 28px 0;
+      padding: 8px 0;
+      border-top: 1px dashed rgba(40, 40, 40, 0.12);
+      border-bottom: 1px dashed rgba(40, 40, 40, 0.12);
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px;
+      color: #7a7a7a;
+      font-size: 0.9em;
+      animation: fadeInUp 1s ease-out 1s both;
+      border-top: 1px solid rgba(40, 40, 40, 0.08);
+    }
+
+    /* ---------- China block (если вдруг используется) ---------- */
+    .china-block {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(200, 190, 175, 0.5);
+      border: 1px solid rgba(40, 40, 40, 0.2);
+      border-radius: 8px;
+    }
+    .china-block h3 {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+    .china-block ul { margin: 10px 0 10px 20px; }
+    .china-block li { margin: 6px 0; font-size: 0.95em; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 768px) {
+      .main-title h1 { font-size: 2.3em; }
+      .subtitle { font-size: 1em; letter-spacing: 1.5px; }
+      .attention { padding: 30px 22px; }
+      .attention h2 { font-size: 1.35em; letter-spacing: 3px; }
+      .attention > p { font-size: 1.05em; }
+      .accordion-header { padding: 18px 22px; }
+      .accordion-header h3 { font-size: 1.2em; }
+      .accordion-content { padding: 0 22px; }
+      .accordion-item.active .accordion-content { padding: 0 22px 20px; }
+      .dl-btn { padding: 9px 24px; font-size: 0.8em; }
+      .support-method { padding: 22px 20px; }
+      .contact-pill--email { font-size: 1.15em; padding: 14px 20px; }
+      .contact-pill--boosty { font-size: 1em; }
+    }
+
+    @media (max-width: 480px) {
+      .main-title h1 { font-size: 1.9em; }
+      .accordion-header { padding: 16px 18px; flex-wrap: wrap; gap: 8px; }
+      .accordion-header h3 { font-size: 1.15em; }
+      .dl-btn { padding: 8px 20px; font-size: 0.75em; width: 100%; }
+      .contact-pill--email { font-size: 1em; padding: 12px 16px; }
+    }
   </style>
 </head>
 <body>
   <div class="particles" id="particles"></div>
   <div class="smoke-bottom"></div>
+
   <div class="container">
     <div class="main-title">
       <h1>Science of Indifference</h1>
@@ -166,39 +461,38 @@
         </div>
       </div>
     </div>
-    
+
     <div class="attention">
       <h2>Support the Project</h2>
       <p>This book is completely free. You can download it, copy it, and share it while respecting authorship.</p>
-      
       <p>I'm giving it away because practical knowledge shouldn't be held hostage by corporate algorithms. However, if this book brought you clarity, peace of mind, understanding, or confidence—and you'd like to say thank you—here are the working methods to support the project and the author:</p>
 
-      <div class="support-method">
-        <h4>Digital Gift Cards (Standard Method)</h4>
-        <p>Purchase a digital gift card from any of the following platforms (any amount, any region) and send the redemption code to:</p>
-        <p style="text-align:center;margin:20px 0"><span class="email-highlight">scienceofindifference@gmail.com</span></p>
-        
-        <ul style="margin:15px 0 15px 20px;line-height:1.8">
-          <li><strong>Amazon</strong> — US, UK, DE, FR, ES, IT, MX, BR, CA, AU, JP, and others</li>
-          <li><strong>Apple App Store / iTunes</strong> — any country</li>
-          <li><strong>Steam</strong> — any region</li>
-          <li><strong>Google Play</strong> — any country</li>
-          <li><strong>MercadoLibre</strong> — for Latin American readers (MX, AR, BR, CL, CO)</li>
-          <li><strong>JD.com E-Cards</strong> (京东E卡) — for Chinese readers</li>
-          <li><strong>Apple Gift Cards</strong> (中国区) — for Chinese readers</li>
-          <li><strong>Steam Wallet Codes</strong> (蒸汽平台 / Perfect World) — for Chinese readers</li>
-        </ul>
-        
-        <p style="font-size:0.9em;color:#555;margin-top:12px"><em>This bypasses international banking restrictions and goes directly to me. Whether you're in North America, Europe, Latin America, or Asia — just buy a gift card from your local store and email me the code. That's it.</em></p>
-      </div>
+      <div class="contact-group">
 
-      <div class="support-method">
-        <h4>For Readers in Russia</h4>
-        <p>If you're based in Russia and want to support the project directly, you can do so via Boosty:</p>
-        <p style="text-align:center;margin:20px 0">
-          <a href="https://boosty.to/marat_bek/posts/cf2fd2b7-8ab5-4a82-80ec-4bb86d8e22f5" class="boosty-link" target="_blank" rel="noopener">boosty.to/marat_bek</a>
-        </p>
-        <p style="font-size:0.9em;color:#555;margin-top:12px"><em>Any contribution helps keep this research independent and freely available.</em></p>
+        <div class="support-method">
+          <h4>Digital Gift Cards (Standard Method)</h4>
+          <p>Purchase a digital gift card from any of the following platforms (any amount, any region) and send the redemption code to:</p>
+          <span class="contact-pill contact-pill--email">scienceofindifference@gmail.com</span>
+          <ul>
+            <li><strong>Amazon</strong> — US, UK, DE, FR, ES, IT, MX, BR, CA, AU, JP, and others</li>
+            <li><strong>Apple App Store / iTunes</strong> — any country</li>
+            <li><strong>Steam</strong> — any region</li>
+            <li><strong>Google Play</strong> — any country</li>
+            <li><strong>MercadoLibre</strong> — for Latin American readers (MX, AR, BR, CL, CO)</li>
+            <li><strong>JD.com E-Cards</strong> (京东E卡) — for Chinese readers</li>
+            <li><strong>Apple Gift Cards</strong> (中国区) — for Chinese readers</li>
+            <li><strong>Steam Wallet Codes</strong> (蒸汽平台 / Perfect World) — for Chinese readers</li>
+          </ul>
+          <p class="note"><em>This bypasses international banking restrictions and goes directly to me. Whether you're in North America, Europe, Latin America, or Asia — just buy a gift card from your local store and email me the code. That's it.</em></p>
+        </div>
+
+        <div class="support-method">
+          <h4>For Readers in Russia</h4>
+          <p>If you're based in Russia and want to support the project directly, you can do so via Boosty:</p>
+          <a href="https://boosty.to/marat_bek/posts/cf2fd2b7-8ab5-4a82-80ec-4bb86d8e22f5" class="contact-pill contact-pill--boosty" target="_blank" rel="noopener">boosty.to/marat_bek</a>
+          <p class="note"><em>Any contribution helps keep this research independent and freely available.</em></p>
+        </div>
+
       </div>
 
       <p style="margin-top:25px;font-size:0.95em;color:#444;text-align:center">There are no premium chapters, hidden paywalls, or subscriptions here.</p>
@@ -229,11 +523,7 @@
         const isExpanded = header.getAttribute('aria-expanded') === 'true';
         header.setAttribute('aria-expanded', !isExpanded);
         item.classList.toggle('active');
-        if (!isExpanded) {
-          content.style.maxHeight = content.scrollHeight + 'px';
-        } else {
-          content.style.maxHeight = null;
-        }
+        content.style.maxHeight = isExpanded ? null : content.scrollHeight + 'px';
       };
       header.addEventListener('click', toggleAccordion);
       header.addEventListener('keydown', (e) => {
