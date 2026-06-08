@@ -6,7 +6,6 @@
   <title>Science of Indifference — Marat Bekmurzaev</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%231a1a1a' stroke-width='4'/><path d='M20 50 L50 70 L80 50 M50 30 L50 70' fill='none' stroke='%231a1a1a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <style>
-    /* === TN Roman Font Face (если файл шрифта доступен на сервере) === */
     @font-face {
       font-family: "TN Roman";
       src: url("/fonts/TN-Roman.woff2") format("woff2"),
@@ -57,18 +56,17 @@
     .support-method h4{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.1em;font-weight:700;color:#1a1a1a;margin-bottom:10px}
     .support-method p{font-size:1em;color:#2a2a2a;margin:8px 0;line-height:1.6}
     
-    /* === СТИЛИЗОВАННЫЙ EMAIL === */
     .email-highlight{
       font-family:"TN Roman","Times New Roman",monospace,serif;
-      font-size:1.1em;
-      font-weight:500;
+      font-size:1.2em;
+      font-weight:700;
       color:#1a1a1a;
       background:rgba(235,225,210,0.8);
-      padding:8px 16px;
+      padding:10px 20px;
       border-radius:3px;
       border-left:3px solid rgba(40,40,40,0.5);
       display:inline-block;
-      letter-spacing:0.2px;
+      letter-spacing:0.3px;
       text-decoration:none !important;
       cursor:default;
       transition:background 0.2s ease;
@@ -77,12 +75,30 @@
       background:rgba(220,210,195,0.95);
     }
 
+    .boosty-link{
+      font-family:"TN Roman","Times New Roman",monospace,serif;
+      font-size:1.15em;
+      font-weight:700;
+      color:#1a1a1a;
+      background:rgba(235,225,210,0.8);
+      padding:10px 20px;
+      border-radius:3px;
+      border-left:3px solid rgba(40,40,40,0.5);
+      display:inline-block;
+      letter-spacing:0.3px;
+      text-decoration:none !important;
+      transition:background 0.2s ease;
+    }
+    .boosty-link:hover{
+      background:rgba(220,210,195,0.95);
+    }
+
     .china-block{margin-top:30px;padding:20px;background:rgba(200,190,175,0.5);border:1px solid rgba(40,40,40,0.2);border-radius:8px}
     .china-block h3{font-family:"TN Roman","Times New Roman",Times,Georgia,serif;font-size:1.2em;font-weight:700;color:#1a1a1a;margin-bottom:12px}
     .china-block ul{margin:10px 0 10px 20px}
     .china-block li{margin:6px 0;font-size:0.95em}
     @keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
-    @media(max-width:768px){.main-title h1{font-size:2.3em}.subtitle{font-size:1em;letter-spacing:1.5px}.attention{padding:30px 22px}.attention h2{font-size:1.35em;letter-spacing:3px}.attention p{font-size:1.05em}.accordion-header{padding:18px 22px}.accordion-header h3{font-size:1.2em}.accordion-content{padding:0 22px}.accordion-item.active .accordion-content{padding:0 22px 20px}.dl-btn{padding:9px 24px;font-size:0.8em}.email-highlight{font-size:1em;padding:7px 14px;display:block;text-align:center;width:fit-content;margin:15px auto}}
+    @media(max-width:768px){.main-title h1{font-size:2.3em}.subtitle{font-size:1em;letter-spacing:1.5px}.attention{padding:30px 22px}.attention h2{font-size:1.35em;letter-spacing:3px}.attention p{font-size:1.05em}.accordion-header{padding:18px 22px}.accordion-header h3{font-size:1.2em}.accordion-content{padding:0 22px}.accordion-item.active .accordion-content{padding:0 22px 20px}.dl-btn{padding:9px 24px;font-size:0.8em}.email-highlight,.boosty-link{font-size:1em;padding:8px 16px;display:block;text-align:center;width:fit-content;margin:15px auto}}
     @media(max-width:480px){.main-title h1{font-size:1.9em}.accordion-header{padding:16px 18px;flex-wrap:wrap;gap:8px}.accordion-header h3{font-size:1.15em}.dl-btn{padding:8px 20px;font-size:0.75em;width:100%}}
     .accordion-header:focus{outline:2px solid rgba(40,40,40,0.3);outline-offset:-2px}
     .accordion-header:focus:not(:focus-visible){outline:none}
@@ -100,7 +116,6 @@
     <div class="divider"></div>
 
     <div class="accordion">
-      <!-- 1. Download the Book -->
       <div class="accordion-item">
         <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-2" id="header-2">
           <h3>1. Download the Book</h3>
@@ -121,7 +136,6 @@
         </div>
       </div>
 
-      <!-- 2. What It Is -->
       <div class="accordion-item">
         <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-1" id="header-1">
           <h3>2. What It Is</h3>
@@ -137,7 +151,6 @@
         </div>
       </div>
 
-      <!-- 3. Writings -->
       <div class="accordion-item">
         <div class="accordion-header" role="button" tabindex="0" aria-expanded="false">
           <h3>3. Writings</h3>
@@ -177,6 +190,15 @@
         </ul>
         
         <p style="font-size:0.9em;color:#555;margin-top:12px"><em>This bypasses international banking restrictions and goes directly to me. Whether you're in North America, Europe, Latin America, or Asia — just buy a gift card from your local store and email me the code. That's it.</em></p>
+      </div>
+
+      <div class="support-method">
+        <h4>For Readers in Russia</h4>
+        <p>If you're based in Russia and want to support the project directly, you can do so via Boosty:</p>
+        <p style="text-align:center;margin:20px 0">
+          <a href="https://boosty.to/marat_bek/posts/cf2fd2b7-8ab5-4a82-80ec-4bb86d8e22f5" class="boosty-link" target="_blank" rel="noopener">boosty.to/marat_bek</a>
+        </p>
+        <p style="font-size:0.9em;color:#555;margin-top:12px"><em>Any contribution helps keep this research independent and freely available.</em></p>
       </div>
 
       <p style="margin-top:25px;font-size:0.95em;color:#444;text-align:center">There are no premium chapters, hidden paywalls, or subscriptions here.</p>
