@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>淡然的科学 — 平静戒烟指南 | Marat Bekmurzaev</title>
+  <meta name="description" content="戒烟不是英雄壮举,而是约30次尝试的统计学过程。一本关于"淡然"与拒绝内耗的免费开源手册。">
+  <meta name="keywords" content="戒烟, 躺平戒烟, 拒绝内耗, 淡然科学, 免费戒烟书, 复吸, 尼古丁">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%231a1a1a' stroke-width='4'/><path d='M20 50 L50 70 L80 50 M50 30 L50 70' fill='none' stroke='%231a1a1a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <style>
+    @font-face {
+      font-family: "TN Roman";
+      src: url("/fonts/TN-Roman.woff2") format("woff2"),
+           url("/fonts/TN-Roman.woff") format("woff"),
+           url("/fonts/TN-Roman.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      /* CJK-first стек. TN Roman убран — он не содержит иероглифов */
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                   "Noto Sans CJK SC", "Source Han Sans SC", "WenQuanYi Micro Hei",
+                   "SimSun", "PMingLiU", sans-serif;
+      background: linear-gradient(135deg, #f5f0e6 0%, #e8e0d5 50%, #dcd4c8 100%);
+      color: #1a1a1a;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Латинские вставки (email, имена, подписи) — для них возвращаем TN Roman */
+    :lang(en),
+    .latin {
+      font-family: "TN Roman", "Times New Roman", Times, Georgia, serif;
+    }
+
+    .lang-switch {
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      font-size: 0.95em;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
+    .lang-switch a {
+      color: #5a5a5a;
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid rgba(40, 40, 40, 0.15);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      font-family: "TN Roman", "Times New Roman", serif;
+    }
+    .lang-switch a:hover {
+      color: #1a1a1a;
+      border-color: rgba(40, 40, 40, 0.4);
+      background: rgba(255, 252, 245, 0.6);
+    }
+
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: rgba(40, 40, 40, 0.12);
+      border-radius: 50%;
+      animation: float 25s infinite linear;
+    }
+    @keyframes float {
+      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .smoke-bottom {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 100%; height: 180px;
+      background: linear-gradient(to top, rgba(40, 40, 40, 0.05), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 10px;
+      animation: fadeInUp 1s ease-out;
+    }
+    .main-title h1 {
+      font-size: 3.2em;
+      font-weight: 700;
+      letter-spacing: 4px; /* для иероглифов — больше, чем у латиницы */
+      background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 1.15em;
+      color: #5a5a5a;
+      letter-spacing: 6px; /* китайский subtitle любит воздух между символами */
+    }
+
+    .divider {
+      width: 80px; height: 2px;
+      background: linear-gradient(90deg, transparent, #3a3a3a, transparent);
+      margin: 35px auto;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scaleX(0.9); }
+      50%      { opacity: 1;   transform: scaleX(1); }
+    }
+
+    /* ---------- Accordion (Details/Summary) ---------- */
+    .accordion {
+      margin: 50px 0 65px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    details {
+      background: rgba(235, 225, 210, 0.6);
+      border: 1px solid rgba(40, 40, 40, 0.12);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    details[open] {
+      background: rgba(220, 210, 195, 0.85);
+      border-color: rgba(40, 40, 40, 0.3);
+    }
+    summary {
+      padding: 22px 28px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '▸';
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #3a3a3a;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    details[open] summary::after {
+      transform: rotate(90deg);
+      color: #1a1a1a;
+    }
+    summary h3 {
+      font-size: 1.35em;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .details-content {
+      padding: 0 28px 28px;
+    }
+    .details-content p {
+      font-size: 1.05em;
+      color: #2a2a2a;
+      margin: 16px 0;
+      line-height: 1.9;
+      text-align: left;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .details-content ul { margin: 16px 0 16px 20px; color: #2a2a2a; }
+    .details-content li { margin: 10px 0; font-size: 1.02em; line-height: 1.9; }
+
+    /* ---------- Download buttons ---------- */
+    .dl-btn {
+      display: inline-block;
+      background: transparent;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 2px;
+      border: 2px solid rgba(40, 40, 40, 0.4);
+      border-radius: 50px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      box-shadow: 0 0 25px rgba(40, 40, 40, 0.15);
+      padding: 14px 40px;
+      font-size: 0.95em;
+      margin: 4px;
+    }
+    .dl-btn:hover {
+      border-color: rgba(40, 40, 40, 0.8);
+      box-shadow: 0 0 45px rgba(40, 40, 40, 0.3);
+      transform: translateY(-3px);
+    }
+    .download-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 24px 0;
+    }
+
+    /* ---------- Attention block ---------- */
+    .attention {
+      background: rgba(220, 210, 195, 0.7);
+      border: 1px solid rgba(40, 40, 40, 0.15);
+      border-radius: 10px;
+      padding: 40px 35px;
+      margin: 45px 0;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 1s ease-out 0.2s both;
+      position: relative;
+      overflow: hidden;
+    }
+    .attention h2 {
+      font-size: 1.6em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 6px;
+    }
+    .attention > p {
+      font-size: 1.1em;
+      color: #2a2a2a;
+      text-align: left;
+      margin: 14px 0;
+      line-height: 1.9;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+
+    /* ---------- Support methods ---------- */
+    .support-method {
+      margin: 28px 0;
+      padding: 28px 32px;
+      background: rgba(245, 238, 225, 0.45);
+      border: 1px solid rgba(40, 40, 40, 0.08);
+      border-radius: 14px;
+    }
+    .support-method h4 {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+    .support-method p {
+      font-size: 1.02em;
+      color: #2a2a2a;
+      margin: 10px 0;
+      line-height: 1.9;
+      text-align: left;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .support-method ul {
+      margin: 15px 0 15px 20px;
+      line-height: 1.9;
+    }
+    .support-method .note {
+      font-size: 0.92em;
+      color: #555;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    /* ---------- Contact pills ---------- */
+    .contact-pill {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      font-weight: 700;
+      color: #1a1a1a;
+      background: rgba(250, 245, 235, 0.9);
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: 1px solid rgba(40, 40, 40, 0.12);
+      letter-spacing: 0.5px;
+      text-align: center;
+      text-decoration: none !important;
+      transition: all 0.25s ease;
+      box-shadow: 0 1px 3px rgba(40, 40, 40, 0.04);
+    }
+    .contact-pill--email {
+      font-size: 1.15em;
+      padding: 16px 32px;
+      cursor: default;
+      user-select: all;
+      font-family: "Courier New", "Consolas", monospace;
+      word-break: break-all;
+    }
+
+    .contact-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 28px 0;
+      padding: 8px 0;
+      border-top: 1px dashed rgba(40, 40, 40, 0.12);
+      border-bottom: 1px dashed rgba(40, 40, 40, 0.12);
+    }
+
+    /* ---------- Red Envelope block ---------- */
+    .red-envelope {
+      margin-top: 30px;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(180, 50, 50, 0.08) 0%, rgba(220, 180, 100, 0.12) 100%);
+      border: 1px solid rgba(180, 50, 50, 0.2);
+      border-radius: 14px;
+    }
+    .red-envelope h4 {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #8a2a2a;
+      margin-bottom: 14px;
+      letter-spacing: 3px;
+    }
+    .red-envelope h4 span.en {
+      font-size: 0.75em;
+      color: #888;
+      font-weight: 400;
+      margin-left: 8px;
+      letter-spacing: 0;
+    }
+    .red-envelope p {
+      font-size: 1em;
+      color: #2a2a2a;
+      margin: 10px 0;
+      line-height: 1.9;
+      text-align: left;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .red-envelope .note {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 25px;
+      color: #7a7a7a;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(40, 40, 40, 0.08);
+      letter-spacing: 1px;
+    }
+
+    /* ---------- Quote block (парадокс) ---------- */
+    .paradox {
+      margin: 24px 0;
+      padding: 22px 28px;
+      border-left: 3px solid rgba(40, 40, 40, 0.35);
+      background: rgba(250, 245, 235, 0.5);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #2a2a2a;
+      line-height: 2;
+      text-align: left;
+    }
+    .paradox strong {
+      font-style: normal;
+      color: #1a1a1a;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .main-title h1 { font-size: 2.2em; letter-spacing: 3px; }
+      .subtitle { font-size: 1em; letter-spacing: 4px; }
+      .attention { padding: 30px 22px; }
+      .attention h2 { font-size: 1.35em; letter-spacing: 4px; }
+      summary { padding: 18px 22px; }
+      summary h3 { font-size: 1.2em; letter-spacing: 1.5px; }
+      .details-content { padding: 0 22px 22px; }
+      .dl-btn { padding: 12px 30px; font-size: 0.9em; }
+      .support-method { padding: 22px 20px; }
+      .contact-pill--email { font-size: 0.95em; padding: 14px 20px; }
+      .lang-switch { top: 16px; right: 16px; font-size: 0.85em; }
+    }
+
+    @media (max-width: 480px) {
+      .main-title h1 { font-size: 1.8em; letter-spacing: 2px; }
+      summary { padding: 16px 18px; }
+      summary h3 { font-size: 1.15em; letter-spacing: 1px; }
+      .dl-btn { padding: 10px 24px; font-size: 0.85em; width: 100%; }
+      .contact-pill--email { font-size: 0.85em; padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="smoke-bottom"></div>
+
+  <div class="lang-switch">
+    <a href="index.html" lang="en">English</a>
+  </div>
+
+  <div class="container">
+    <div class="main-title">
+      <h1>淡然的科学</h1>
+      <div class="subtitle">平静戒烟 · 拒绝内耗 · 习惯重塑</div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="accordion">
+      <details>
+        <summary><h3>一、下载本书</h3></summary>
+        <div class="details-content">
+          <p style="text-align:center;color:#5a5a5a;margin-bottom:14px">本书完全免费。无任何附加条件。</p>
+          <div class="download-wrapper">
+            <a href="Science-of-Indifference-CN.pdf" class="dl-btn" download>下载 PDF(中文)</a>
+          </div>
+          <p style="text-align:center;font-size:0.9em;color:#777;margin-top:8px">若需英文、俄文或西班牙文版本,请切换至 <a href="index.html" lang="en" style="color:#2a2a2a;border-bottom:1px dotted rgba(40,40,40,0.4)">English</a> 页面。</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3>二、这本书是什么</h3></summary>
+        <div class="details-content">
+          <p>这不是一本励志手册,也不是贩卖焦虑的成功学。它建立在真实数据之上——基于多伦多大学 2016 年发表于《BMJ Open》的纵向研究,以及对数千名吸烟者的长期追踪。</p>
+
+          <div class="paradox">
+            戒烟从来不是一次英雄壮举,而是一场约 <strong>30 次尝试</strong>的统计学过程。<br>
+            复吸不是人格缺陷,而是常态;<br>
+            失败不归零,而是累积。<br>
+            <strong>戒烟真正的终点,不是"我忍住了",而是"我淡然了"。</strong>
+          </div>
+
+          <p>主流叙事告诉您:必须靠意志力、必须一蹴而就、必须永不复吸。这套说辞让无数人在反复失败中陷入<strong>内耗</strong>与自我厌恶——而这,正是整个戒烟产业赖以牟利的根基。</p>
+
+          <p>本书提供另一条路径:没有口号,没有鞭策,没有"最后一次"的神话。它只是诚实地展示尼古丁依赖如何形成,又如何自然消散——当您停止与自己为敌,当反复尝试不再被污名为"软弱",<strong>淡然</strong>便会取代依赖。</p>
+
+          <p>您感到的轻松,并非承诺,而是一种必然:当您不再强迫自己成为英雄,习惯便会在不知不觉中失去它的权力。</p>
+
+          <p style="margin-top:18px;color:#555;font-style:italic">这不是唯一的道路。它只是诚实的工具——帮您找到属于自己的那条路。</p>
+        </div>
+      </details>
+    </div>
+<div class="attention">
+      <h2>支持本项目</h2>
+      <p>本书完全免费。您可以下载、复制并分享,但请尊重作者版权。</p>
+      <p>我将此书开源,是因为实用的知识不应被企业算法所绑架。然而,如果本书为您带来了内心的清明、平静、领悟或笃定——并且您想表达感谢——以下是支持本项目与作者的可行方式:</p>
+
+      <div class="contact-group">
+
+        <div class="support-method">
+          <h4>电子礼品卡(标准方式)</h4>
+          <p>在您所在地区的任意平台购买电子礼品卡(金额不限),并将兑换码发送至:</p>
+          <span class="contact-pill contact-pill--email">scienceofindifference@gmail.com</span>
+          <ul>
+            <li><strong>京东 E 卡</strong>(中国大陆读者)</li>
+            <li><strong>Apple 礼品卡</strong>(中国区)</li>
+            <li><strong>Steam 钱包充值码</strong>(蒸汽平台 / Perfect World)</li>
+            <li><strong>Amazon</strong> — 美、英、德、法、日、加、澳等地区</li>
+            <li><strong>Apple App Store / iTunes</strong> — 任意国家</li>
+            <li><strong>Steam</strong> — 任意地区</li>
+            <li><strong>Google Play</strong> — 任意国家</li>
+          </ul>
+          <p class="note">这种方式绕开了国际银行结算的限制,款项能直接抵达作者手中。无论您身处亚洲、欧洲还是美洲——只需在当地商店购买礼品卡,将兑换码发至邮箱即可。</p>
+        </div>
+
+        <div class="red-envelope">
+          <h4>红包 <span class="en" lang="en">Red Envelope</span></h4>
+          <p>如果本书让您卸下了内心的重负,您也可以通过微信或支付宝发送一份数字红包,以表心意:</p>
+          <span class="contact-pill contact-pill--email">scienceofindifference@gmail.com</span>
+          <p class="note">请通过 PayPal、微信国际版或支付宝转账至该邮箱关联账户。金额随心,重在心意。每一份支持都将用于维持本研究的独立性与开放性。</p>
+        </div>
+
+      </div>
+
+      <p style="margin-top:25px;font-size:0.95em;color:#444;text-align:center">这里没有付费章节,没有隐藏门槛,没有订阅陷阱。</p>
+    </div>
+    <footer>
+      <p>© 2025 <span lang="en">Marat Bekmurzaev</span> — 《淡然的科学》</p>
+    </footer>
+  </div>
+
+  <script>
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer) {
+      for (let i = 0; i < 45; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDelay = Math.random() * 25 + 's';
+        p.style.animationDuration = (20 + Math.random() * 15) + 's';
+        particlesContainer.appendChild(p);
+      }
+    }
+  </script>
+</body>
+</html>
