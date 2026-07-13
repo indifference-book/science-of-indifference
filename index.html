@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Science of Indifference — Marat Bekmurzaev</title>
+  <title>Science of Indifference — Quit Smoking Without Willpower | Marat Bekmurzaev</title>
+  <meta name="description" content="Scientific deconstruction of the Allen Carr myth. BMJ Open study (2016) proves successful quitting requires 29.6 attempts on average. Method of negative recursion and guilt removal. Free book.">
+  <meta name="keywords" content="quit smoking, Allen Carr myth, BMJ Open study, 29.6 attempts, negative recursion, smoking cessation, nicotine addiction, free book, Science of Indifference">
+  <meta name="author" content="Marat Bekmurzaev">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Science of Indifference — Quit Smoking Without Willpower">
+  <meta property="og:description" content="BMJ Open study proves: successful quitting requires 29.6 attempts. Scientific approach to nicotine addiction. Free book.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://indifference-book.github.io/science-of-indifference/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Science of Indifference — Quit Smoking Without Willpower">
+  <meta name="twitter:description" content="BMJ Open study proves: successful quitting requires 29.6 attempts.">
+  
+  <link rel="canonical" href="https://indifference-book.github.io/science-of-indifference/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%231a1a1a' stroke-width='4'/><path d='M20 50 L50 70 L80 50 M50 30 L50 70' fill='none' stroke='%231a1a1a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
   <style>
     @font-face {
@@ -436,11 +453,11 @@
     <div class="divider"></div>
 
     <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-2" id="header-2">
+      <div class="accordion-item active">
+        <div class="accordion-header" role="button" tabindex="0" aria-expanded="true" aria-controls="content-2" id="header-2">
           <h3>1. Download the Book</h3>
         </div>
-        <div class="accordion-content" id="content-2" role="region" aria-labelledby="header-2">
+        <div class="accordion-content" id="content-2" role="region" aria-labelledby="header-2" style="max-height: 500px;">
           <div class="accordion-content-inner">
             <p style="text-align:center;color:#5a5a5a;margin-bottom:10px">This book is completely free. No strings attached.</p>
             <div class="download-wrapper">
@@ -456,11 +473,11 @@
         </div>
       </div>
 
-      <div class="accordion-item">
-        <div class="accordion-header" role="button" tabindex="0" aria-expanded="false" aria-controls="content-1" id="header-1">
+      <div class="accordion-item active">
+        <div class="accordion-header" role="button" tabindex="0" aria-expanded="true" aria-controls="content-1" id="header-1">
           <h3>2. What It Is</h3>
         </div>
-        <div class="accordion-content" id="content-1" role="region" aria-labelledby="header-1">
+        <div class="accordion-content" id="content-1" role="region" aria-labelledby="header-1" style="max-height: 800px;">
           <div class="accordion-content-inner">
             <p>A perspective built on real patterns, not promises. It shows how quitting actually works, stripped of myths and quick fixes.</p>
             <p>No illusions. Just a clear foundation for understanding how nicotine dependence forms—and how it loses its grip.</p>
@@ -538,7 +555,11 @@
         const isExpanded = header.getAttribute('aria-expanded') === 'true';
         header.setAttribute('aria-expanded', !isExpanded);
         item.classList.toggle('active');
-        content.style.maxHeight = isExpanded ? null : content.scrollHeight + 'px';
+        if (!isExpanded) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = null;
+        }
       };
       header.addEventListener('click', toggleAccordion);
       header.addEventListener('keydown', (e) => {
